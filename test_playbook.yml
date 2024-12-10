@@ -1,0 +1,16 @@
+---
+- name: Simple Test Playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Test connectivity to hosts
+      ping:
+
+    - name: Create a test file on all hosts
+      file:
+        path: /tmp/test_file.txt
+        state: touch
+
+    - name: Print a message
+      debug:
+        msg: "Test completed successfully on {{ inventory_hostname }}"
